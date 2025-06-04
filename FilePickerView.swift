@@ -5,7 +5,7 @@ struct FilePickerView: UIViewControllerRepresentable {
     var onPicked: (URL) -> Void
 
     func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
-        let controller = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.plainText, UTType.filenameExtension("md")!], asCopy: false)
+        let controller = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.plainText, UTType(filenameExtension: "md")!], asCopy: false)
         controller.allowsMultipleSelection = false
         controller.delegate = context.coordinator
         return controller
