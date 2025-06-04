@@ -29,5 +29,9 @@ struct FilePickerView: UIViewControllerRepresentable {
                 onPicked(url)
             }
         }
+
+        func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+            controller.dismiss(animated: true)
+        }
     }
 }
