@@ -42,9 +42,15 @@ struct EditorView: View {
                 .padding()
         } else {
             ScrollView {
-                Text(try! AttributedString(markdown: document.content))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
+                if let attributed = try? AttributedString(markdown: document.content) {
+                    Text(attributed)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
+                } else {
+                    Text(document.content)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
+                }
             }
         }
     }
